@@ -204,9 +204,9 @@ To resolve this issue, we are can create a new security group that allows HTTP (
 
 ![Copy IP Address Again](./img/20%20Copy%20IP%20Address%20Again.png) 
 
-- Write http:// 34.227.161.20  in Chrome, we will be able to see the data of our website. 
+- Write http:// 34.227.161.20 in Chrome, we will be able to see the data of our website. 
 
-![]() 
+![Data of the Website](./img/21.%20Data%20of%20the%20Website.png) 
 
 Currently, let's take a look at how our inbound and outbound rules are configured. 
 
@@ -220,7 +220,7 @@ The outbound rules permits all traffic to exit the instance.
 
 Through this rule we are able to access the website. 
 
-![]() 
+![Outbound Rules Permit the Website](./img/24.%20Outbound%20Rules%20Permit%20the%20Website.png) 
 
 6. Let's see how removing the outbound rule affects the instance connectivity. Means now, no one can go outside the instance. 
 
@@ -242,7 +242,7 @@ Now that the outbound rules have been removed, let's take a look at how it appea
 
 After making this change, let's feat whether wa can still access the website. 
 
-![]()
+![Inbound Rule Permit the Website](./img/28.%20Inbound%20Rule%20Permit%20the%20Website.png)
 
 So even though we have removed the outbound rule that allows all traffic from the instance to the outside world, we can still access the website. According to the logic we discussed, when a user accesses the instance, the inbound rule permits HTTP protocol traffic to enter. However, when the instance sends data to the user's browser to display the website, the outbound rule should prevent it. Yet, we are still able to view the website. 
 
@@ -255,7 +255,7 @@ If we delete both the inbound and outbound rules, essentially, we are closing al
 
 7. You will be able to delete the inbound rule in the same way we have deleted the outbound rule. 
 
-- Go to the outbound tabs.
+- Go to the inbound tabs.
 
 - Click on "edit inbound rule".
 
@@ -285,9 +285,11 @@ We'll add a rule specifically allowing HTTP traffic in the outbound rules. This 
 
 8. Click on edit outbound rule in the outbound tab, 
 
-![]() 
+![Click Edit Outbound Rule](./img/34.%20Click%20Edit%20Outbound%20Rule.png) 
 
-- Click on "add rule".
+- Click on "add rule". 
+
+![Click Add Rule](./img/35.%20Click%20Add%20Rule.png)
 
 - Choose type.
 
@@ -297,19 +299,17 @@ We'll add a rule specifically allowing HTTP traffic in the outbound rules. This 
 
 - Click on "Save rules" 
 
-![]()
+![Choose Type, Destination, CIDR and Save Rules](./img/36.%20Choose%20Type,%20Destination,%20CIDR%20and%20Save%20Rules.png)
 
-![]()
-
-![]()
+![Successfully Modified Outbound Rules](./img/37.%20Successfully%20Modified%20Outbound%20Rules.png)
 
 Now, let's see if we can access the website, So, we are not able to see it. 
 
-![]() 
+![Checking Website Access](./img/38.%20Checking%20Website%20Access.png) 
 
 But if you look here, we are able to go to the outside world from the instance. We are using here. 
 
-![]() 
+![Curl Command that Fetches Data from URL](./img/39.%20Curl%20Command%20that%20Fetches%20Data%20from%20URL.png) 
 
 **Note-** curl is a command-line tool that fetches data from a URL. 
 
@@ -323,11 +323,13 @@ Let's come Network Access Control Lists (NACLs)
 
 - Then click on VPC 
 
+![Navigate Search Bar and Click VPC](./img/40.%20Navigate%20Search%20Bar%20and%20Click%20VPC.png) 
+
 2. Navigate to the Network ACLs in the left sidebar. 
 
 - Click on "Create Network ACL" 
 
-![]() 
+![Navigate Network ACLs and Click Create](./img/41.%20Navigate%20Network%20ACLs%20and%20Click%20Create.png) 
 
 3. Now, provide a a name for your Network ACL, 
 
@@ -335,7 +337,9 @@ Let's come Network Access Control Lists (NACLs)
 
 - Then click on "Create Network ACL". 
 
-![]() 
+![Create Network ACL](./img/42.%20Create%20Network%20ACL.png) 
+
+![NACL Created Successfully](./img/43.%20NACL%20Created%20Successfully.png)
 
 4. If you selected the Network ACL you created. 
 
@@ -343,7 +347,9 @@ Let's come Network Access Control Lists (NACLs)
 
 By default, it will be notice that it's denying all traffic from all ports. 
 
-![]() 
+![Navigate to NACL Inbound Tab](./img/44.%20Navigate%20to%20NACL%20Inbound%20Tab.png) 
+
+![Navigate to NACL Inbound Tab Cont](./img/45.%20Navigate%20to%20NACL%20Inbound%20Tab%20Cont.png)
 
 Similarly if you look at the outbound rules, you will observe that it's denying all outbound traffic on all parts by default. 
 
@@ -351,7 +357,7 @@ Similarly if you look at the outbound rules, you will observe that it's denying 
 
 - And navigate to the "Outbound" tab. 
 
-![]() 
+![Navigate to NACL Outbound Tab](./img/46.%20Navigate%20to%20NACL%20Outbound%20Tab.png) 
 
 5. To make changes, 
 
@@ -361,11 +367,11 @@ Similarly if you look at the outbound rules, you will observe that it's denying 
 
 - And click on "Edit inbound rules". 
 
-![]() 
+![Click Edit Inbound Rule on NACL](./img/47.%20Click%20Edit%20Inbound%20Rule%20on%20NACL.png) 
 
 6. Now, click on "Add new rule" 
 
-![]() 
+![Click Add New Rule](./img/48.%20Click%20Add%20New%20Rule.png) 
 
 7. Now, choose the rule number. 
 
@@ -377,11 +383,11 @@ Similarly if you look at the outbound rules, you will observe that it's denying 
 
 - Then click on "Save changes". 
 
-![]() 
+![Updated Inbound Rule Successfully](./img/49%20Updated%20Inbound%20Rule%20Successfully.png) 
 
 Currently, this NACL is not associated with any of the subnets in the VPC. 
 
-![]() 
+![NACL not Associated with Subnet](./img/50.%20NACL%20not%20Associted%20with%20Subnet.png) 
 
 8. Let's associate it. 
 
@@ -391,25 +397,23 @@ Currently, this NACL is not associated with any of the subnets in the VPC.
 
 - Choose "Edit subnet association". 
 
-![]() 
+![Edit Subnet Association](./img/51.%20Edit%20Subnet%20Association.png) 
 
-- Then select your public subnet, as our instance resides in the public subnet. 
-
-![]() 
+- Then select your public subnet, as our instance resides in the public subnet.
 
 Once selected, you will see it listed under "Selected subnets"
 
 - Finally, click on "Save changes". 
 
-![]() 
+![Select Public Subnet and Save Changes](./img/52.%20Select%20Public%20Subnet%20and%20Save%20Changes.png) 
 
 Public subnet have been successfully associated to the NACL. 
 
-![]() 
+![Successfully Added Subnet to NACL](./img/53.%20Successfully%20Added%20Subnet%20to%20NACL.png) 
 
-As soon as the public subnet is attached to NACl, and then you try to access the website again by typing the URL http:// , you will notice that you are unable to see the website. 
+As soon as the public subnet is attached to NACl, and then you try to access the website again by typing the URL http:// 54.227.161.20, you will notice that you are unable to see the website. 
 
-![]() 
+![Unable to Access website](./img/54.%20Unable%20to%20Access%20website.png) 
 
 Although we are permitted all traffic in the inbound rule of our NACL, we are still unable to access the website. This raises the question why isn't the website visible despite these permission? 
 
@@ -417,11 +421,11 @@ The reason why we are unable to access the website despite permitting inbound tr
 
 Even though the inbound rule allows all traffic into the subnet, the outbound rules are still denying all traffic. You can see. 
 
-![]() 
+![Inbound Rule Allows All Traffic](./img/55.%20Inbound%20Rule%20Allows%20All%20Traffic.png) 
 
-![]() 
+![Outbound Rule Deny All Traffic](./img/56.%20Outbound%20Rule%20Deny%20All%20Traffic.png) 
 
-![]() 
+![Network ACLs Diagram](./img/57.%20Network%20ACLs%20Diagram.png) 
 
 9. If we allow outbound traffic as well, 
 
@@ -431,23 +435,21 @@ Even though the inbound rule allows all traffic into the subnet, the outbound ru
 
 - Click "Edit outbound rules". 
 
-![]() 
+![](./img/58.%20Edit%20Outbound%20Rules.png) 
 
-- Click on "Add rule". 
-
-![]() 
+- Click on "Add rule".
 
 - Duplicate the process you followed for creating the inbound rules to establish the outbound rules in a similar manner. 
 
-![]() 
+![Add New Rule, Update and Save Changes](./img/59.%20Add%20New%20Rule,%20Update%20and%20Save%20Changes.png) 
 
-Successfully created the rules. 
+Successfully updated the Outbound rules. 
 
-![]() 
+![Successfully updated the Outbound rules](./img/60.%20Successfully%20updated%20the%20Outbound%20rules.png) 
 
 Upon revisiting the website, you should now be able to access it without any issues. 
 
-![]() 
+![Website Accessible](./img/61.%20Website%20Accessible.png) 
 
 Now, let's see one more interesting scenario. 
 
@@ -461,30 +463,31 @@ Now, let's see one more interesting scenario.
 
 Configuring security group 
 
-![]()
+![Configuring Security Group Inbound Rule](./img/62.%20Configuring%20Security%20Group.png)
 
-![]() 
+![](./img/63.%20Configuring%20Security%20Inbound%20Rule%20Cont.png) 
 
-![]() 
+![Configuring Security Group Outbound Rule](./img/64.%20Configuring%20Security%20Group%20Outbound%20Rule.png) 
 
-![]() 
+![Configuring Security Group Outbound Rule Successfully](./img/65.%20Configuring%20Security%20Group%20Outbound%20Rule%20Successfully.png) 
 
 ## NACL 
 
 Let's remove, it so by default it be denied all traffic. 
 
-![]() 
+![Remove NACL Inbound Rule Allow](./img/66.%20Remove%20NACL%20Inbound%20Rule%20Allow.png) 
 
-![]() 
+![NACL Inbound Rule By Default](./img/67.%20NACL%20By%20Default.png) 
 
 Additionally, the outbound rule will be removed, defaulting to deny all traffic by default. 
 
-![]()
+![Remove NACL Outbound Rule Allow](./img/68.%20Remove%20NACL%20Outbound%20Rule%20Allow.png)
 
 Let's try to access the website. 
 
-![]() 
+![NACL Outbound Rule By Default](./img/69.%20NACL%20Outbound%20Rule%20By%20Default.png) 
 
+![Access Denied](./img/70.%20Access%20Denied.png)
 So we are unable to access the website. Why? Even if we have allowed inbound traffic for HTTP in the security group. 
 Imagine you are at the entrance of a building and their is a security guard checking everyone who wants to come in. That security guard is like NACL. They have a list of rules (like "no backpacks allowed" or "no food or drinks inside"), and they check each person against these rules as they enter. 
 
